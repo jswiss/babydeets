@@ -1,9 +1,35 @@
+
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-mod db;
+use axum::{
+  routing::{get, post},
+  http::StatusCode,
+  response::IntoResponse,
+  Json, Router};
 
-fn main() {
+use std::net::SocketAddr;
+use serde::{Deserialize, Serialize};
+use tracing;
+use tracing_subscriber;
+
+
+mod db;
+mod api;
+
+#[tokio::main]
+async fn main() {
+  tracing_subscriber::fmt::init();
+    let app = Router::new()
+        .route("/", get(api::root));
+
+    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    tracing::info!("listening on {}", addr);
+    axum::Server::bind(&addr)
+        .serve(app.into_make_service())
+        .await
+        .unwrap();
+
   tauri::Builder::default()
     .setup(|_app| {
       db::init();
