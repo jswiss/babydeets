@@ -1,31 +1,36 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import { babyName, babyBirthday } from '$lib/stores';
 </script>
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Baby Details" />
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	{#if $babyName}
+		<h1>{babyName}</h1>
+	{:else}
+		<form method="POST">
+			<label for="name">
+				What's your baby's name?
+				<input type="text" name="name" />
+			</label>
+			<label for="sex">
+				What sex were they born?
+				<select name="sex">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+					<option value="other">Other</option>
+				</select>
+			</label>
+			<label for="birthday">
+				What is their birthday
+				<input type="date" name="birthday" />
+			</label>
+			<button>Submit</button>
+		</form>
+	{/if}
 </section>
 
 <style>
@@ -40,20 +45,10 @@
 	h1 {
 		width: 100%;
 	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	form {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 0.2;
+		justify-content: space-around;
 	}
 </style>
