@@ -10,6 +10,15 @@ use diesel::prelude::*;
 use diesel::sqlite::SqliteConnection;
 use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
 
+#[cfg(test)]
+use diesel::debug_query;
+use diesel::insert_into;
+use diesel::prelude::*;
+#[cfg(test)]
+use diesel::sqlite::Sqlite;
+use serde::Deserialize;
+use std::error::Error;
+
 pub mod models;
 pub mod schema;
 
@@ -73,4 +82,13 @@ fn db_file_exists() -> bool {
 fn get_db_path() -> String {
     let home_dir = dirs::home_dir().unwrap();
     home_dir.to_str().unwrap().to_string() + "/.config/babydeets/database.sqlite"
+}
+
+#[test]
+fn examine_sql_from_insert_default_values() {
+    use schema::babies::dsl::*;
+
+    let query = insert_into(babies).default_values();
+    let sql = "INSERT INTO `babies` DEFAULT VALUES -- binds: []";
+    assert_eq!(sql, debug_query::<Sqlite, _>(&query).to_string());
 }

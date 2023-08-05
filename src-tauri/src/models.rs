@@ -1,3 +1,4 @@
+use super::schema::babies;
 use diesel::prelude::*;
 use chrono::NaiveDateTime;
 
@@ -11,6 +12,14 @@ pub struct Baby {
   pub birthday: String,
   pub created_at: NaiveDateTime,
   pub updated_at: NaiveDateTime
+}
+
+#[derive(Insertable)]
+#[diesel(table_name = babies)]
+pub struct NewBaby<'a> {
+  pub name: &'a str,
+  pub sex: &'a str,
+  pub birthday: &'a str
 }
 
 #[derive(Queryable, Selectable)]
