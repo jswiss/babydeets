@@ -85,10 +85,32 @@ fn get_db_path() -> String {
 }
 
 #[test]
-fn examine_sql_from_insert_default_values() {
+fn examine_babies_sql_from_insert_default_values() {
     use schema::babies::dsl::*;
 
     let query = insert_into(babies).default_values();
     let sql = "INSERT INTO `babies` DEFAULT VALUES -- binds: []";
     assert_eq!(sql, debug_query::<Sqlite, _>(&query).to_string());
+}
+
+#[test]
+fn examine_notes_sql_from_insert_default_values() {
+    use schema::notes::dsl::*;
+
+    let note_query = insert_into(notes).default_values();
+    let note_sql = "INSERT INTO `notes` DEFAULT VALUES -- binds: []";
+
+
+    assert_eq!(note_sql, debug_query::<Sqlite, _>(&note_query).to_string());
+}
+
+#[test]
+fn examine_comments_sql_from_insert_default_values() {
+    use schema::comments::dsl::*;
+
+    let comment_query = insert_into(comments).default_values();
+    let comment_sql = "INSERT INTO `comments` DEFAULT VALUES -- binds: []";
+
+
+    assert_eq!(comment_sql, debug_query::<Sqlite, _>(&comment_query).to_string());
 }
