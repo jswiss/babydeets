@@ -15,7 +15,7 @@ diesel::table! {
     comments (id) {
         id -> Integer,
         note_id -> Integer,
-        note -> Nullable<Text>,
+        comment -> Nullable<Text>,
         image -> Nullable<Binary>,
         file -> Nullable<Binary>,
         created_at -> Timestamp,
