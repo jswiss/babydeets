@@ -1,7 +1,7 @@
 -- Your SQL goes here
 CREATE TABLE IF NOT EXISTS comments (
-  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  note_id INTEGER NOT NULL,
+  id VARCHAR(50) PRIMARY KEY NOT NULL,
+  note_id VARCHAR(50) NOT NULL,
   comment TEXT,
   image BLOB,
   file BLOB,

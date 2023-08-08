@@ -2,7 +2,7 @@
 
 diesel::table! {
     babies (id) {
-        id -> Integer,
+        id -> Text,
         name -> Text,
         sex -> Text,
         birthday -> Text,
@@ -13,8 +13,8 @@ diesel::table! {
 
 diesel::table! {
     comments (id) {
-        id -> Integer,
-        note_id -> Integer,
+        id -> Text,
+        note_id -> Text,
         comment -> Nullable<Text>,
         image -> Nullable<Binary>,
         file -> Nullable<Binary>,
@@ -25,8 +25,8 @@ diesel::table! {
 
 diesel::table! {
     notes (id) {
-        id -> Integer,
-        baby_id -> Integer,
+        id -> Text,
+        baby_id -> Text,
         note -> Nullable<Text>,
         image -> Nullable<Binary>,
         file -> Nullable<Binary>,

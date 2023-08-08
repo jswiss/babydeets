@@ -1,7 +1,7 @@
 -- Your SQL goes here
 CREATE TABLE IF NOT EXISTS notes (
-  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  baby_id INTEGER NOT NULL,
+  id VARCHAR(50) PRIMARY KEY NOT NULL,
+  baby_id VARCHAR(50) NOT NULL,
   note TEXT,
   image BLOB,
   file BLOB,

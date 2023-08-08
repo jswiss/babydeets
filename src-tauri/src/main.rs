@@ -5,8 +5,11 @@ use std::env;
 mod models;
 mod schema;
 mod db;
+mod commands;
+mod services;
 
 use crate::db::db_init;
+use crate::commands::baby_commands::*;
 
 fn main() {
   tauri::Builder::default()
@@ -15,6 +18,7 @@ fn main() {
       Ok(())
     })
     .invoke_handler(tauri::generate_handler![
+      create_baby
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

@@ -1,4 +1,3 @@
-use crate::schema::notes;
 use diesel::prelude::*;
 use chrono::NaiveDateTime;
 
@@ -6,8 +5,8 @@ use chrono::NaiveDateTime;
 #[diesel(table_name = crate::schema::notes)]
 #[diesel(check_for_backend(diesel::sqlite::Sqlite))]
 pub struct Note {
-  pub id: i32,
-  pub baby_id: i32,
+  pub id: String,
+  pub baby_id: String,
   pub note: Option<String>,
   pub image: Option<Vec<u8>>,
   pub file: Option<Vec<u8>>,

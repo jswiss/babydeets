@@ -7,15 +7,6 @@ use diesel::prelude::*;
 use diesel::sqlite::SqliteConnection;
 use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
 
-#[cfg(test)]
-use diesel::debug_query;
-use diesel::insert_into;
-use diesel::prelude::*;
-#[cfg(test)]
-use diesel::sqlite::Sqlite;
-use serde::Deserialize;
-use std::error::Error;
-
 pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!("./migrations");
 
 pub fn db_init() {
