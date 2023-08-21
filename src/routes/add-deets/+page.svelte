@@ -1,22 +1,16 @@
+<script>
+	import AddBabyModal from '~root/src/lib/components/add-baby-modal.svelte';
+</script>
+
 <svelte:head>
 	<title>Add Baby Details</title>
 	<meta name="Add Baby Details" content="Use this form to add details about your baby" />
 </svelte:head>
 
 <section>
-	<h1>Add Deets</h1>
+	<h1>Add BabyDeets</h1>
 
-	<form method="POST">
-		<label>
-			Date
-			<input name="date" type="date" />
-		</label>
-		<label>
-			Notes
-			<input name="notes" type="textarea" />
-		</label>
-		<button>Submit</button>
-	</form>
+	<AddBabyModal />
 </section>
 
 <style>
