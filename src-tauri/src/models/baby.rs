@@ -1,16 +1,16 @@
 use diesel::prelude::*;
-use chrono::NaiveDateTime;
+use diesel::{Insertable, Queryable};
+use serde::Serialize;
 
-#[derive(Queryable, Selectable, Insertable)]
+#[derive(Queryable, Serialize, Selectable, Insertable)]
 #[diesel(table_name = crate::schema::babies)]
-#[diesel(check_for_backend(diesel::sqlite::Sqlite))]
+#[derive(Debug)]
 pub struct Baby {
   pub id: String,
   pub name: String,
   pub sex: String,
   pub birthday: String,
-  pub created_at: NaiveDateTime,
-  pub updated_at: NaiveDateTime
+  pub created_at: String
 }
 
 #[derive(serde::Deserialize)]
