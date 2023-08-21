@@ -23,7 +23,8 @@ fn main() -> Result<()> {
     })
     .invoke_handler(tauri::generate_handler![
       create_baby,
-      list_babies
+      list_babies,
+      get_baby
     ])
     .plugin(tauri_plugin_sqlite_store::init())
     .run(tauri::generate_context!())

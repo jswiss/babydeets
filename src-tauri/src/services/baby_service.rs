@@ -18,3 +18,11 @@ pub fn list_babies() -> Vec<Baby> {
   .load::<Baby>(conn)
   .expect("Error loading babies")
 }
+
+pub fn get_baby(id: String) -> Option<Baby> {
+  let conn = &mut establish_db_connection();
+
+  dsl::babies.filter(dsl::id.eq(id))
+    .first::<Baby>(conn)
+    .ok()
+}

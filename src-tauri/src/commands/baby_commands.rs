@@ -25,6 +25,11 @@ pub fn list_babies() -> Vec<Baby> {
   babies
 }
 
+#[tauri::command]
+pub fn get_baby(id: String) -> Option<Baby> {
+  baby_service::get_baby(id)
+}
+
 fn string_date() -> String {
   let now = chrono::Utc::now().naive_utc();
 
