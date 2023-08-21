@@ -6,8 +6,7 @@ diesel::table! {
         name -> Text,
         sex -> Text,
         birthday -> Text,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
+        created_at -> Text,
     }
 }
 
