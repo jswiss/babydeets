@@ -2,20 +2,18 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use std::env;
-use color_eyre::eyre::Result;
 
 mod models;
 mod schema;
 mod db;
 mod commands;
 mod services;
+mod fns;
 
 use crate::db::db_init;
 use crate::commands::baby_commands::*;
 
-fn main() -> Result<()> {
-  color_eyre::install()?;
-
+fn main() {
   tauri::Builder::default()
     .setup(|_app| {
       db_init();
@@ -24,11 +22,9 @@ fn main() -> Result<()> {
     .invoke_handler(tauri::generate_handler![
       create_baby,
       list_babies,
-      get_baby
+      get_baby,
+      update_baby
     ])
-    .plugin(tauri_plugin_sqlite_store::init())
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
-
-    Ok(())
-}
+  }
