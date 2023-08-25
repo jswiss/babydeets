@@ -4,9 +4,11 @@ diesel::table! {
     babies (id) {
         id -> Text,
         name -> Text,
+        photo -> Nullable<Binary>,
         sex -> Text,
         birthday -> Text,
         created_at -> Text,
+        updated_at -> Text,
     }
 }
 
