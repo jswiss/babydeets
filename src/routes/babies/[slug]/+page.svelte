@@ -1,13 +1,3 @@
-<!-- <div class="text-column">
-	<h1>About this app</h1>
-
-	<p>This is a desktop app to keep track of notes about your baby.</p>
-
-	<p>
-		Go to <a href="/add-deets">Add Deets</a> to start adding notes about your baby!
-	</p>
-</div> -->
-
 <script lang="ts">
 	let files: Array<File> = [];
 
@@ -40,11 +30,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>About</title>
-	<meta name="description" content="About this app" />
-</svelte:head>
-
 <main on:drop={handleDrop} on:dragover|preventDefault>
 	<h1>Drag & Drop Images</h1>
 	<form on:submit={handleFormSubmit}>
@@ -52,8 +37,9 @@
 			type="file"
 			multiple
 			on:change={(e) => {
+				console.log(e);
 				// @ts-ignore
-				files = Array.from(e?.target?.files || []);
+				files = Array.from(e.target?.files || []);
 			}}
 		/>
 		<button type="submit" disabled={files.length === 0}>Upload</button>
@@ -67,10 +53,3 @@
 		</ul>
 	{/if}
 </main>
-
-<style>
-	main {
-		text-align: center;
-		font-family: sans-serif;
-	}
-</style>

@@ -23,7 +23,8 @@ fn main() {
       create_baby,
       list_babies,
       get_baby,
-      update_baby
+      update_baby,
+      upload_baby_files
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

@@ -1,13 +1,13 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
+	import baby from '$lib/images/baby-emoji.png';
 	import github from '$lib/images/github.svg';
 </script>
 
 <header>
 	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
+		<a href="/babies">
+			<img src={baby} alt="baby" />
 		</a>
 	</div>
 
@@ -25,9 +25,6 @@
 			<li aria-current={$page.url.pathname === '/add-deets' ? 'page' : undefined}>
 				<a href="/add-deets">Add Deets</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
@@ -35,7 +32,7 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
+		<a href="https://github.com/jswiss/babydeets">
 			<img src={github} alt="GitHub" />
 		</a>
 	</div>
