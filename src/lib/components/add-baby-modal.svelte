@@ -1,55 +1,53 @@
-<script src="typescript">
+<script lang="ts">
 	import { invoke } from '@tauri-apps/api';
 	import { goto } from '$app/navigation';
 
 	let name = '';
 	let sex = '';
 	let birthday = '';
-
-	let errorMessage = '';
+	let photo = '';
 
 	async function createBaby() {
-		console.log('in create');
-		console.log({ name, sex, birthday });
 		if (name === '' || sex === '' || birthday === '') return;
 
-		const newBaby = { name, sex, birthday };
+		const newBaby = { name, sex, birthday, photo };
 
 		await invoke('create_baby', { newBaby });
-		goto('/about');
+		goto('/');
 	}
 </script>
 
-<section>
-	<h1>Add Deets</h1>
-
-	<div>
-		<label>
-			Name
-			<input name="name" bind:value={name} type="text" />
-		</label>
-		<label>
-			Birthday
-			<input name="birthday" bind:value={birthday} type="date" />
-		</label>
-		<label>
-			Sex
-			<input name="sex" bind:value={sex} type="text" />
-		</label>
-		<button on:click={createBaby}>Submit</button>
-	</div>
-</section>
+<form>
+	<label for="name">
+		Name
+		<input name="name" bind:value={name} type="text" />
+	</label>
+	<label for="birthday">
+		Birthday
+		<input name="birthday" bind:value={birthday} type="date" />
+	</label>
+	<label for="sex">
+		Sex
+		<input name="sex" bind:value={sex} type="text" />
+	</label>
+	<label for="image">
+		Image
+		<input name="image" bind:value={photo} type="file" />
+	</label>
+	<button on:click={createBaby}>Submit</button>
+</form>
 
 <style>
-	section {
+	form {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
-		flex: 0.6;
+		flex: 0.4;
+		width: max-content;
 	}
 
-	h1 {
-		width: 100%;
+	input {
+		width: 90%;
 	}
 </style>

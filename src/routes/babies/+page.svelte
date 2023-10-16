@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { invoke } from '@tauri-apps/api';
 	import { onMount } from 'svelte';
-	import type { Babies } from '../lib/types/babies';
+	import type { Babies } from '$lib/types/babies';
 
 	let babies: Babies = [];
 
@@ -10,11 +10,6 @@
 		babies = await res;
 	});
 </script>
-
-<svelte:head>
-	<title>Home</title>
-	<meta name="All babies" content="Show all babies" />
-</svelte:head>
 
 <section>
 	<h1>BabyDeets</h1>
@@ -28,17 +23,3 @@
 		{/each}
 	{/if}
 </section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-</style>
