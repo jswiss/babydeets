@@ -8,9 +8,18 @@ use serde::Serialize;
 pub struct Baby {
   pub id: String,
   pub name: String,
-  pub photo: Option<Vec<u8>>,
+  pub photo: Option<String>,
   pub sex: String,
   pub birthday: String,
   pub created_at: String,
   pub updated_at: String
+}
+
+#[derive(serde::Deserialize)]
+#[derive(Debug)]
+pub struct NewBaby {
+  pub name: String,
+  pub photo: Option<String>,
+  pub sex: String,
+  pub birthday: String,
 }

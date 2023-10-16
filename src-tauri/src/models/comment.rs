@@ -8,8 +8,8 @@ pub struct Comment {
   pub id: String,
   pub note_id: String,
   pub comment: Option<String>,
-  pub image: Option<Vec<u8>>,
-  pub file: Option<Vec<u8>>,
+  pub image: Option<String>,
+  pub file: Option<String>,
   pub created_at: NaiveDateTime,
   pub updated_at: NaiveDateTime
 }
