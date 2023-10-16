@@ -26,7 +26,6 @@ fn main() {
       update_baby,
       upload_baby_files
     ])
-    .plugin(tauri_plugin_websocket::init())
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
   }
